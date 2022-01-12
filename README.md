@@ -1,2 +1,2 @@
-# Tapo110
+# homeaut
 Homeautomation with Tapo110
