@@ -15,15 +15,20 @@ print ("Device Info")
 print(di)
 
 #PyP110 has all Pyp100 functions and additionally allows to query energy usage infos
-eu = p110.getEnergyUsage() #Returns dict with all the energy usage
+e = p110.getEnergyUsage() #Returns dict with all the energy usage
+#workaround getDeviceInfo returns decrypted payload not deserialized json via json.loads
+if isinstance(e,str):
+    eu = json.loads(e)
+else:
+    eu = e
 
 print ("Energy Usage")
 print (eu)
 
-with open('device_info2.json', 'w') as outfile:
+with open('device_info.json', 'w') as outfile:
     json.dump(di, outfile)
 outfile.close()
-with open('energy_usage2.json', 'w') as outfile2:
+with open('energy_usage.json', 'w') as outfile2:
     json.dump(eu, outfile2)
 outfile2.close()
 
