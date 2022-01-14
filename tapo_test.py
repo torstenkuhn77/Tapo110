@@ -1,6 +1,8 @@
 import json
 
 from PyP100 import PyP110
+import DeviceInfo
+import EnergyUsage
 
 p110 = PyP110.P110("192.168.0.111", "torstenk@hotmail.de", ",Damokles1.") #Creating a P110 plug object
 
