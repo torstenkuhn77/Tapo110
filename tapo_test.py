@@ -1,8 +1,10 @@
 import json
 
 from PyP100 import PyP110
-import DeviceInfo
-import EnergyUsage
+import DeviceInfoFactory from DeviceInfoFactory
+import DeviceInfo from DeviceInfoFactory
+import EnergyUsageFactory from EnergyUsageFactory
+import EnergyUsage from EnergyUsageFactory
 
 p110 = PyP110.P110("192.168.0.111", "torstenk@hotmail.de", ",Damokles1.") #Creating a P110 plug object
 
@@ -16,16 +18,18 @@ di = p110.getDeviceInfo() #Returns dict with all the device info
 print ("Device Info")
 print(di)
 
+df = DeviceInfoFactory(di['result'], di['error'])
+
+deviceInfo = df.serialize()
+
 #PyP110 has all Pyp100 functions and additionally allows to query energy usage infos
-e = p110.getEnergyUsage() #Returns dict with all the energy usage
-#workaround getDeviceInfo returns decrypted payload not deserialized json via json.loads
-if isinstance(e,str):
-    eu = json.loads(e)
-else:
-    eu = e
+eu = p110.getEnergyUsage() #Returns dict with all the energy usage
 
 print ("Energy Usage")
 print (eu)
+
+ef = EnergyUsageFactory(eu['result'], eu['error'])
+energyUsage = ef.serialize()
 
 with open('device_info.json', 'w') as outfile:
     json.dump(di, outfile)
