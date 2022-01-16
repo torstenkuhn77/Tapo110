@@ -50,7 +50,7 @@ class DeviceInfoFactory:
         self.result = result
         self.error_code = error_code
 
-    def serialize(self) -> DeviceInfo:
+    def deserialize(self) -> DeviceInfo:
         res = DeviceInfo()
         res.device_id = self.result['device_id']
         res.fw_ver = self.result['fw_ver']

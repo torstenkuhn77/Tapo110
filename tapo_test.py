@@ -20,7 +20,7 @@ print(di)
 
 df = DeviceInfoFactory(di['result'], di['error'])
 
-deviceInfo = df.serialize()
+deviceInfo = df.deserialize()
 
 #PyP110 has all Pyp100 functions and additionally allows to query energy usage infos
 eu = p110.getEnergyUsage() #Returns dict with all the energy usage
@@ -29,7 +29,7 @@ print ("Energy Usage")
 print (eu)
 
 ef = EnergyUsageFactory(eu['result'], eu['error'])
-energyUsage = ef.serialize()
+energyUsage = ef.deserialize()
 
 with open('device_info.json', 'w') as outfile:
     json.dump(di, outfile)
