@@ -22,7 +22,7 @@ class EnergyUsageFactory:
         self.result = result
         self.error_code = error_code
 
-    def dedeserialize(self) -> EnergyUsage:
+    def deserialize(self) -> EnergyUsage:
         res = EnergyUsage()
         res.today_runtime = self.result['today_runtime']
         res.month_runtime = self.result['month_runtime']
