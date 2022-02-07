@@ -6,7 +6,7 @@ from DeviceInfoFactory import DeviceInfo
 from EnergyUsageFactory import EnergyUsageFactory
 from EnergyUsageFactory import EnergyUsage
 
-p110 = PyP110.P110("192.168.0.110", "torstenk@hotmail.de", ",Damokles1.") #Creating a P110 plug object
+p110 = PyP110.P110("192.168.180.181", "tapo@parb.eu","Sandra01")    #Creating a BECKER P110 plug object
 
 p110.handshake() #Creates the cookies required for further methods
 p110.login() #Sends credentials to the plug and creates AES Key and IV for further methods
